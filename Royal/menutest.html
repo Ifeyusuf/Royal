@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .nav ul {
+  display: none;
+}
+
+.nav-tgl {
+  display: inline-block;
+  cursor: pointer;
+  position: fixed;
+  z-index: 100;
+  right: 30px;
+  top: 30px;
+  width: 70px;
+  height: 70px;
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+  background: #fff;
+  box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.24);
+  line-height: 0.6;
+  text-align: center;
+}
+.nav-tgl > span {
+  display: inline-block;
+  position: relative;
+  height: 2px;
+  width: 34px;
+  border-radius: 1px;
+  background: #293335;
+  vertical-align: middle;
+}
+.nav-tgl > span:before, .nav-tgl > span:after {
+  display: inline-block;
+  position: absolute;
+  content: "";
+  height: 2px;
+  border-radius: 1px;
+  background: #293335;
+  transition: all 200ms;
+}
+.nav-tgl > span:before {
+  top: -11px;
+  left: 3px;
+  width: 28px;
+}
+.nav-tgl > span:after {
+  top: 11px;
+  left: 6px;
+  width: 22px;
+}
+.nav-tgl:focus {
+  outline: none;
+}
+.nav-tgl:hover > span:after, .nav-tgl:hover > span:before {
+  width: 34px;
+  left: 0;
+}
+
+.nav:before {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  transition: all 500ms ease-in-out;
+  clip-path: circle(30px at calc(100% - 65px) 65px);
+  visibility: hidden;
+}
+
+.menu.active .nav:before {
+  visibility: visible;
+  clip-path: circle(100%);
+}
+.menu.active .nav-tgl > span {
+  height: 0;
+}
+.menu.active .nav-tgl > span:after, .menu.active .nav-tgl > span:before {
+  top: 0px;
+  left: 0;
+  width: 34px;
+}
+.menu.active .nav-tgl > span:after {
+  transform: rotate(-45deg);
+}
+.menu.active .nav-tgl > span:before {
+  transform: rotate(45deg);
+}
+    </style>
+
+
+    <title>Document</title>
+</head>
+<body>
+    
+    
+<!-- Please ❤ if you like it-->
+<!-- update 25/4/2019-->
+<!-- I'd noticed that there are a lot of people who seem interested in this pen so I changed a little bit in the logic so it would fit better on production sites and make it easier to read!-->
+<div class="menu">
+    <button class="nav-tgl" type="button" aria-label="toggle menu">
+      <!-- this span just for the three dividers in the hamburger button--><span aria-hidden="true"></span>
+    </button>
+    <nav class="nav">
+      <!-- I don't care about the menu elements here so I will hide them-->
+      <ul>
+        <li>element one</li>
+        <li>element two</li>
+        <li>element three</li>
+        <li>element four</li>
+      </ul>
+    </nav>
+  </div>
+    
+
+  <script>
+    const menu = document.querySelector('.menu');
+const btn = menu.querySelector('.nav-tgl');
+btn.addEventListener('click', evt => {
+menu.classList.toggle('active');
+})
+</script>
+</body>
+</html>
